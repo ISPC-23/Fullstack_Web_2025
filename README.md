@@ -1,29 +1,72 @@
 # 🚴‍♀️ Proyecto Integrador - Tienda Full
 
-Proyecto grupal para el módulo "Programador Full Stack" de la tecnicatura en desarrollo web y aplicaciones digitales del ISPC . Está compuesto por tres espacios curriculares: Introducción a la Programación Web I, Programación I y Proyecto Integrador.
+Proyecto grupal para el módulo "Programador Web" de la Tecnicatura Superior en Desarrollo Web y Aplicaciones Digitales del ISPC (Instituto Superior Politécnico de Córdoba). Está compuesto por tres espacios curriculares: Introducción a la Programación Web II, Programación II, Desarrollo de Software y Proyecto Integrador II.
 
-## 👩‍👩‍👦‍👦 Integrantes 
-
-- Barletta Fernando | [GitHub](https://github.com/Ferbarletta)
-- Blasiche Andrés | [GitHub](https://github.com/blasichea)
-- Cabrera Verónica | [GitHub](https://github.com/Verosolc30)
-- Castillo Fernanda | [GitHub](https://github.com/FernandaACastillo)
-- Krenn Federico | [GitHub](https://github.com/fedekrenn)
-- Liendo Germán Emanuel | [GitHub](https://github.com/g3rm6n)
-- Gillini Emiliano | [GitHub](https://github.com/emigillini)
-- Caminos Picco Diego | [GitHub](https://github.com/DiegoECP)
 
 ## 💻 Descripción del proyecto 
 
-Se trata de una aplicación web fullstack para una tienda ecommerce, el rubro seleccionado es la venta de bicicletas. El alcance de este proyecto es un diseño estático para el front y un back que se conecta a una DB desplegada en MySQL. Front y back no están conectados entre sí en los sprint alcanzados (A realizar en los próximos).
+Se trata de una aplicación web fullstack para una tienda ecommerce, el rubro seleccionado es la venta de bicicletas. El alcance de este proyecto es un diseño dinámico SPA en Angular para el frontend y Django + DRF para el backend. La base de datos es MySQL alojada en un servicio cloud de clevercloud
+
+![image](https://github.com/fedekrenn/tiendafull-ispc/assets/90353038/d045f1bb-7729-4db7-b924-063e4309cdf0)
+
+## Requisitos
+
+### Frontend
+
+- **Node.js**: 16.x o superior
+- **NPM**: 7.x o superior
+- **Angular CLI**: 17.x o superior
+
+Para instalar Node.js y npm, puedes descargarlo desde [nodejs.org](https://nodejs.org/).
+
+### Backend
+
+- **Python**: 3.7 o superior
+
+Para instalar Python, puedes descargarlo desde [python.org](https://www.python.org/).
 
 ## 🛠 Instalación y ejecución
 
-1 - Clonar el proyecto
+> [!IMPORTANT]
+Según tu instalación de Python deberás usar el comando `python` o `python3`, al igual que `pip` o `pip3`
 
-`git clone https://github.com/ISPC-23/FullStack2024.git`
+1. Clonar el proyecto
 
-![image](https://github.com/ISPC-23/FullStack2023/assets/132081100/29c5e580-8044-4560-8a41-f70178a0cc54)
+```bash
+git clone https://github.com/ISPC-23/FullStack2024.git
+```
+
+2. Instalar las dependencias del proyecto
+
+```bash
+cd frontend && npm install
+```
+
+3. Inicializar el front
+
+```bash
+ng serve -o
+```
+
+4. Posicionarse en la carpeta backend
+
+```bash
+cd .. && cd backend
+```
+
+5. Instalar las dependencias del backend.
+
+Puedes optar por levantar un entorno virtual e instalar las versiones específicas
+
+```bash
+pip install -r requeriments.txt
+```
+
+6. Levantar el servidor backend
+
+```bash
+cd tiendafull && python manage.py runserver
+```
 
 
 ### 📃 Documentación:
