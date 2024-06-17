@@ -33,50 +33,18 @@
     <h2>Nosotros</h2>
     <p>Te presentamos el equipo que hace posible a Tienda full:</p>
     <ul class="lista-desarrolladores">
+      @for (member of members; track member.name) {
       <li>
-        <h3>Barletta Fernando</h3>
-        <img
-          src="../../../assets/profiles/fernando.jpeg"
-          alt="Barletta Fernando"
-        />
+        <a [href]="'https://github.com/' + member.link" target="_blank">
+          <h3>{{ member.name }}</h3>
+          <img
+            [src]="'../../../assets/profiles/' + member.img"
+            [alt]="'Imagen de perfil de ' + member.name"
+            [title]="'Repositorio de ' + member.name"
+          />
+        </a>
       </li>
-      <li>
-        <h3>Blasiche Andres</h3>
-        <img src="../../../assets/profiles/andres.jpeg" alt="Blasiche Andres" />
-      </li>
-      <li>
-        <h3>Cabrera Veronica</h3>
-        <img
-          src="../../../assets/profiles/veronica.jpeg"
-          alt="Cabrera Veronica"
-        />
-      </li>
-      <li>
-        <h3>Castillo Fernanda</h3>
-        <img
-          src="../../../assets/profiles/fernanda.png"
-          alt="Castillo Fernanda"
-        />
-      </li>
-      <li>
-        <h3>Krenn Federico</h3>
-        <img
-          src="../../../assets/profiles/federico.jpeg"
-          alt="Krenn Federico"
-        />
-      </li>
-      <li>
-        <h3>Liendo Germán</h3>
-        <img src="../../../assets/profiles/german.jpg" alt="Liendo Germán" />
-      </li>
-      <li>
-        <h3>Caminos Diego</h3>
-        <img src="../../../assets/profiles/diego.jpg" alt="Liendo Germán" />
-      </li>
-      <li>
-        <h3>Gillini Emiliano</h3>
-        <img src="../../../assets/profiles/emiliano.jpg" alt="Liendo Germán" />
-      </li>
+      }
     </ul>
   </section>
   <img
