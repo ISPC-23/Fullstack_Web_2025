@@ -1,26 +1,27 @@
 <h2>Productos existentes:</h2>
 @if (isLoading) {
-<div class="loading-section">
-  <app-loading></app-loading>
-</div>
+  <div class="loading-section">
+    <app-loading></app-loading>
+  </div>
 } @else {
-<ul class="product-list">
-  @for (product of productos; track $index) {
-  <li class="product-card">
-    <div class="product-details">
-      <h3>Modelo : {{ product.modelo }}</h3>
-      <img
-        [src]="product.imagen"
-        alt="{{ product.modelo }}"
-        class="product-image"
-      />
-      <p>Stock : {{ product.stock }}</p>
-      <p>Precio : {{ product.precio | currency }}</p>
-    </div>
-  </li>
-  }
-</ul>
+  <ul class="product-list">
+    @for (product of productos; track $index) {
+      <li class="product-card">
+        <div class="product-details">
+          <h3>Modelo : {{ product.modelo }}</h3>
+          <img
+            [src]="product.imagen"
+            alt="{{ product.modelo }}"
+            class="product-image"
+          />
+          <p>Stock : {{ product.stock }}</p>
+          <p>Precio : {{ product.precio | currency }}</p>
+        </div>
+      </li>
+    }
+  </ul>
 }
+
 <h2>Agregar nuevo producto:</h2>
 <form
   [formGroup]="productoForm"
@@ -35,9 +36,8 @@
       type="text"
       class="form-control"
     />
-    @if (productoForm.get('modelo')?.invalid &&
-    productoForm.get('modelo')?.touched) {
-    <div class="error">Modelo requerido</div>
+    @if (productoForm.get('modelo')?.invalid && productoForm.get('modelo')?.touched) {
+      <div class="error">Modelo requerido</div>
     }
   </div>
 
@@ -49,9 +49,8 @@
       type="number"
       class="form-control"
     />
-    @if (productoForm.get('precio')?.invalid &&
-    productoForm.get('precio')?.touched) {
-    <div class="error">Precio requerido</div>
+    @if (productoForm.get('precio')?.invalid && productoForm.get('precio')?.touched) {
+      <div class="error">Precio requerido</div>
     }
   </div>
 
@@ -63,9 +62,8 @@
       type="number"
       class="form-control"
     />
-    @if (productoForm.get('stock')?.invalid &&
-    productoForm.get('stock')?.touched) {
-    <div class="error">Stock requerido</div>
+    @if (productoForm.get('stock')?.invalid && productoForm.get('stock')?.touched) {
+      <div class="error">Stock requerido</div>
     }
   </div>
 
@@ -91,52 +89,47 @@
 
   <div class="form-group">
     <label for="marca">Marca:</label>
-    <input
-      id="marca"
-      formControlName="marca"
-      type="number"
-      class="form-control"
-    />
+    <select id="marca" formControlName="marca" class="form-control">
+      @for (marca of marcas; track marca.id) {
+        <option [value]="marca.id">{{ marca.nombre }}</option>
+      }
+    </select>
   </div>
 
   <div class="form-group">
     <label for="rodado">Rodado:</label>
-    <input
-      id="rodado"
-      formControlName="rodado"
-      type="number"
-      class="form-control"
-    />
+    <select id="rodado" formControlName="rodado" class="form-control">
+      @for (r of rodados; track $index) {
+        <option [value]="r">{{ r }}</option>
+      }
+    </select>
   </div>
 
   <div class="form-group">
     <label for="estilo">Estilo:</label>
-    <input
-      id="estilo"
-      formControlName="estilo"
-      type="number"
-      class="form-control"
-    />
+    <select id="estilo" formControlName="estilo" class="form-control">
+      @for (estilo of estilos; track estilo.id) {
+        <option [value]="estilo.id">{{ estilo.nombre }}</option>
+      }
+    </select>
   </div>
 
   <div class="form-group">
     <label for="material">Material:</label>
-    <input
-      id="material"
-      formControlName="material"
-      type="number"
-      class="form-control"
-    />
+    <select id="material" formControlName="material" class="form-control">
+      @for (m of materiales; track m.id) {
+        <option [value]="m.id">{{ m.nombre }}</option>
+      }
+    </select>
   </div>
 
   <div class="form-group">
     <label for="color">Color:</label>
-    <input
-      id="color"
-      formControlName="color"
-      type="number"
-      class="form-control"
-    />
+    <select id="color" formControlName="color" class="form-control">
+      @for (c of colores; track c.id) {
+        <option [value]="c.id">{{ c.nombre }}</option>
+      }
+    </select>
   </div>
 
   <button type="submit" class="btn">Crear Producto</button>

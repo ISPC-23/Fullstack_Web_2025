@@ -19,6 +19,38 @@ export class IngresarProductosComponent implements OnInit {
   productoForm!: FormGroup;
   isLoading = true;
 
+  marcas = [
+    { id: 1, nombre: 'Merida' },
+    { id: 2, nombre: 'Vairo' },
+    { id: 3, nombre: 'Oxea' },
+    { id: 4, nombre: 'Trek' },
+    { id: 5, nombre: 'Venzo' }
+  ];
+
+  rodados = [20, 26, 27.5, 29];
+
+  estilos = [
+    { id: 1, nombre: 'BMX' },
+    { id: 2, nombre: 'Rutera' },
+    { id: 3, nombre: 'Mountain Bike' }
+  ];
+
+  materiales = [
+    { id: 1, nombre: 'Hierro' },
+    { id: 2, nombre: 'Aluminio' },
+    { id: 3, nombre: 'Carbono' }
+  ];
+
+  colores = [
+    { id: 1, nombre: 'Amarillo' },
+    { id: 2, nombre: 'Verde' },
+    { id: 3, nombre: 'Azul' },
+    { id: 4, nombre: 'Blanco' },
+    { id: 5, nombre: 'Negro' },
+    { id: 6, nombre: 'Rojo' }
+  ];
+
+
   constructor(
     private producstService: ProductsService,
     private formBuilder: FormBuilder
