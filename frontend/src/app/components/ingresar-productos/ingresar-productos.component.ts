@@ -64,11 +64,11 @@ export class IngresarProductosComponent implements OnInit {
       stock: ['', Validators.required],
       imagen: ['', Validators.required],
       detalle: [''],
-      marca: ['', Validators.required],
-      rodado: ['', Validators.required],
-      estilo: ['', Validators.required],
-      material: ['', Validators.required],
-      color: ['', Validators.required],
+      marca: [this.marcas[0].id, Validators.required],
+      rodado: [this.rodados[0], Validators.required],
+      estilo: [this.estilos[0].id, Validators.required],
+      material: [this.materiales[0].id, Validators.required],
+      color: [this.colores[0].id, Validators.required],
     });
   }
 

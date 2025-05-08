@@ -89,7 +89,7 @@
 
   <div class="form-group">
     <label for="marca">Marca:</label>
-    <select id="marca" formControlName="marca" class="form-control">
+    <select id="marca" formControlName="marca" class="form-control select-arrow">
       @for (marca of marcas; track marca.id) {
         <option [value]="marca.id">{{ marca.nombre }}</option>
       }
@@ -98,7 +98,7 @@
 
   <div class="form-group">
     <label for="rodado">Rodado:</label>
-    <select id="rodado" formControlName="rodado" class="form-control">
+    <select id="rodado" formControlName="rodado" class="form-control select-arrow">
       @for (r of rodados; track $index) {
         <option [value]="r">{{ r }}</option>
       }
@@ -107,7 +107,7 @@
 
   <div class="form-group">
     <label for="estilo">Estilo:</label>
-    <select id="estilo" formControlName="estilo" class="form-control">
+    <select id="estilo" formControlName="estilo" class="form-control select-arrow">
       @for (estilo of estilos; track estilo.id) {
         <option [value]="estilo.id">{{ estilo.nombre }}</option>
       }
@@ -116,7 +116,7 @@
 
   <div class="form-group">
     <label for="material">Material:</label>
-    <select id="material" formControlName="material" class="form-control">
+    <select id="material" formControlName="material" class="form-control select-arrow">
       @for (m of materiales; track m.id) {
         <option [value]="m.id">{{ m.nombre }}</option>
       }
@@ -125,7 +125,7 @@
 
   <div class="form-group">
     <label for="color">Color:</label>
-    <select id="color" formControlName="color" class="form-control">
+    <select id="color" formControlName="color" class="form-control select-arrow">
       @for (c of colores; track c.id) {
         <option [value]="c.id">{{ c.nombre }}</option>
       }
