@@ -4,6 +4,7 @@ interface Member {
   name: string;
   img: string;
   link: string;
+  role: string; 
 }
 
 @Component({
@@ -15,12 +16,11 @@ interface Member {
 })
 export class AboutUsComponent {
   members: Member[] = [
-    { name: 'Barletta Fernando', img: 'fernando.jpeg', link: 'Ferbarletta' },
-    { name: 'Blasiche Andres', img: 'andres.jpeg', link: 'blasichea' },
-    { name: 'Cabrera Veronica', img: 'veronica.jpeg', link: 'Verosolc30' },
-    { name: 'Castillo Fernanda', img: 'fernanda.png', link: 'FernandaACastillo' },
-    { name: 'Krenn Federico', img: 'federico.jpeg', link: 'fedekrenn' },
-    { name: 'Liendo Germán', img: 'german.jpg', link: 'g3rm6n' },
-    { name: 'Gillini Emiliano', img: 'emiliano.jpg', link: 'emigillini' },
+    { name: 'Barletta Fernando', img: 'fernando.jpeg', link: 'Ferbarletta', role: 'Ventas' },
+    { name: 'Beltramone Mateo', img: 'mateo.jpeg', link: 'Mateo88XD', role: 'Ventas' },
+    { name: 'Blasiche Andres', img: 'andres.jpeg', link: 'blasichea', role: 'Postventa' },    
+    { name: 'Cabrera Veronica', img: 'veronica.jpeg', link: 'Verosolc30', role: 'Administración' },
+    { name: 'Krenn Federico', img: 'federico.jpeg', link: 'fedekrenn', role: 'Coordinador General' },    
+    { name: 'Gillini Emiliano', img: 'emiliano.jpg', link: 'emigillini', role: 'Macánica General' },
   ];
 }
