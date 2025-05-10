@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# Fullstack_Web_2025
-Proyecto Integrador Full Stack de la Tecnicatura en Desarrollo Web y Aplicaciones Digitales del ISPC
-=======
 # 🚴‍♀️ Proyecto Integrador - Tienda Full
 
 Proyecto grupal para el módulo "Programador Web" de la Tecnicatura Superior en Desarrollo Web y Aplicaciones Digitales del ISPC (Instituto Superior Politécnico de Córdoba). Está compuesto por tres espacios curriculares: Introducción a la Programación Web II, Programación II, Desarrollo de Software y Proyecto Integrador II.
@@ -81,4 +77,3 @@ Toda la documentación del proyecto tal como el documento IEEE830, los diagramas
 
 - Para hacer el programa más óptimo y ejecutable en cualquier entorno, se optó por subir la base de datos a un servidor en la nube, el mismo es [Clevercloud](https://www.clever-cloud.com/), los datos de conexión están en el archivo de configuración y modificando sólo los datos por el localhost puede ejecutarse con una DB local. De igual manera, en la carpeta database está el archivo "db_script.sql" con el script que crea la db para poder ejecutarla en local.
 
->>>>>>> origin/dev
