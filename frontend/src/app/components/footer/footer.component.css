@@ -29,7 +29,15 @@
   margin: 0 0 10px 0;
   font-weight: bold;
 }
+/* Iconos redes */
+.social-media ul li fa-icon {
+  font-size: 25px; 
+  transition: transform 0.2s ease-in-out;
+}
 
+.social-media ul li fa-icon:hover {
+  transform: scale(1.1); 
+}
 .play-badge {
   width: 120px;
   height: auto;
@@ -41,6 +49,24 @@
 }
 
 .phone {
-  margin-top: 50px;
+  padding-top: 10px;
   text-align: center;
+}
+
+/* Estilo QR */
+.download-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.qr-code {
+  width: 80px;
+  height: auto;
+  transition: transform 0.2s ease-in-out;
+}
+
+.qr-code:hover {
+  transform: scale(1.05);
 }
