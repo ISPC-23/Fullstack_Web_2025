@@ -38,40 +38,41 @@ form {
     cursor: pointer;
     min-width: 120px;
   }
+}
 
-  button {
-    border: 1px solid;
-    border-radius: 5px;
-    padding: 5px 10px;
+button {
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.btn-reset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border-color: #2b3035;
+  transition: 0.2s;
+  background-color: #ffffff;
+
+  img {
+    width: 17px;
+    height: 17px;
   }
 
-  button[type="reset"] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    border-color: #2b3035;
-    transition: 0.2s;
-
-    img {
-      width: 17px;
-      height: 17px;
-    }
-
-    &:hover {
-      background-color: #c7c7c7;
-    }
+  &:hover {
+    background-color: #c7c7c7;
   }
+}
 
-  button[type="submit"] {
-    background-color: #2b3035;
-    border-color: #2b3035;
-    color: #fff;
-    transition: 0.2s;
+button[type="submit"] {
+  background-color: #2b3035;
+  border-color: #2b3035;
+  color: #fff;
+  transition: 0.2s;
 
-    &:hover {
-      background-color: #000000;
-    }
+  &:hover {
+    background-color: #000000;
   }
 }
 

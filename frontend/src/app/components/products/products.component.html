@@ -43,7 +43,7 @@
           (input)="onPriceChange($event)"
         />
       </label>
-      <button type="reset" (click)="resetFilters()">
+      <button class="btn-reset" type="reset" (click)="resetFilters()">
         <img src="../../../assets/icons/reload.svg" />Limpiar filtros
       </button>
       <button type="submit">Buscar</button>
@@ -55,7 +55,7 @@
     } @if (bikes.length !== 0 && filteredBikes.length === 0) {
     <div class="no-results">
       <h3>No hay productos que cumplan con el criterio de búsqueda</h3>
-      <button (click)="resetFilters()">Limpiar filtros</button>
+      <button class="btn-reset" (click)="resetFilters()">Limpiar filtros</button>
     </div>
     } @for (bike of filteredBikes; track $index) {
     <div class="item-card">
