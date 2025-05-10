@@ -39,15 +39,13 @@ export class ProductsComponent {
 
   onSubmit(formData: any): void {
     const { marca, estilo, precio } = formData;
-    this.filteredBikes = this.bikes.filter(
-      (bike) => {
-        const isBrandMatch = marca ? bike.marca === marca : true;
-        const isStyleMatch = estilo ? bike.estilo === estilo : true;
-        const isPriceMatch = precio ? bike.precio <= Number(precio) : true;
+    this.filteredBikes = this.bikes.filter((bike) => {
+      const isBrandMatch = marca ? bike.marca === marca : true;
+      const isStyleMatch = estilo ? bike.estilo === estilo : true;
+      const isPriceMatch = precio ? bike.precio <= Number(precio) : true;
 
-        return isBrandMatch && isStyleMatch && isPriceMatch;
-      }
-    );
+      return isBrandMatch && isStyleMatch && isPriceMatch;
+    });
   }
 
   onPriceChange(event: Event): void {
@@ -58,5 +56,18 @@ export class ProductsComponent {
   resetFilters(): void {
     this.filteredBikes = this.bikes;
     this.selectedPrice = this.maxPrice;
+  }
+
+  showOrHideFilters(): void {
+    const filters = document.querySelector('form') as HTMLElement;
+
+    if (filters.classList.contains('hidden') || filters.classList.contains('initial')) {
+      filters.classList.remove('hidden');
+      filters.classList.remove('initial');
+      filters.classList.add('visible');
+    } else {
+      filters.classList.remove('visible');
+      filters.classList.add('hidden');
+    }
   }
 }

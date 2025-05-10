@@ -1,3 +1,7 @@
+.show-filters {
+  display: none;
+}
+
 .filters {
   display: flex;
   justify-content: center;
@@ -22,7 +26,9 @@ form {
     }
   }
 
-  select {
+  select,
+  ::picker(select) {
+    appearance: base-select;
     background-color: white;
     color: #2b3035;
     border: 1px solid #848484;
@@ -30,6 +36,7 @@ form {
     padding: 6px 12px;
     font-size: 14px;
     cursor: pointer;
+    min-width: 120px;
   }
 
   button {
@@ -224,10 +231,70 @@ form {
   transition: 0.5s;
 }
 
-@media screen and (max-width: 568px) {
-  .no-results h3 {
-    width: 90%;
-    font-size: 18px;
-    font-weight: 500;
+@media screen and (max-width: 838px) {
+  .price-range {
+    width: 100px;
+
+    div {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+      margin-bottom: 5px;
+
+      sub {
+        font-size: 0.5em;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .show-filters {
+    display: block;
+    border: 1px solid #2b3035;
+    background-color: #2b3035;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 auto;
+  }
+
+  form.hidden {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+  }
+
+  form.visible {
+    opacity: 1;
+    max-height: 500px;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+  }
+
+  form {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 10px;
+    width: 300px;
+    transition: 0.3s;
+
+    label {
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 568px) {
+    .no-results h3 {
+      width: 90%;
+      font-size: 18px;
+      font-weight: 500;
+    }
   }
 }
