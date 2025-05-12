@@ -50,3 +50,26 @@ main {
   padding: 10px 20px;
   min-height: 100vh;
 }
+
+button,
+.page-btn {
+  border: 1px solid;
+  border-radius: 5px !important;
+  padding: 5px 10px;
+}
+
+.page-btn {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background-color: #2b3035;
+  border-color: #2b3035;
+  color: #fff;
+  transition: 0.2s;
+  margin: 0 auto;
+}
+
+.page-btn:hover {
+  background-color: #000000;
+  color: #fff;
+}
