@@ -101,21 +101,6 @@ h2 {
   font-size: 0.8em;
 }
 
-.btn {
-  display: block;
-  width: 100%;
-  padding: 8px;
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #218838;
-}
-
 .loading-section {
   display: flex;
   justify-content: center;

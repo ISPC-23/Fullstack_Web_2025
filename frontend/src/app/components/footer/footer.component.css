@@ -1,7 +1,7 @@
 .footer {
   background-color: #2b3035;
   color: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   padding: 20px;
   text-align: center;
 }
@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 280px; /* Espacio entre redes y app */
+  gap: 280px;
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
@@ -29,15 +29,16 @@
   margin: 0 0 10px 0;
   font-weight: bold;
 }
-/* Iconos redes */
+
 .social-media ul li fa-icon {
-  font-size: 25px; 
+  font-size: 25px;
   transition: transform 0.2s ease-in-out;
 }
 
 .social-media ul li fa-icon:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
+
 .play-badge {
   width: 120px;
   height: auto;
@@ -53,7 +54,6 @@
   text-align: center;
 }
 
-/* Estilo QR */
 .download-container {
   display: flex;
   align-items: center;
@@ -64,9 +64,4 @@
 .qr-code {
   width: 80px;
   height: auto;
-  transition: transform 0.2s ease-in-out;
-}
-
-.qr-code:hover {
-  transform: scale(1.05);
 }

@@ -1,25 +1,25 @@
 <h2>Productos existentes:</h2>
 @if (isLoading) {
-  <div class="loading-section">
-    <app-loading></app-loading>
-  </div>
+<div class="loading-section">
+  <app-loading></app-loading>
+</div>
 } @else {
-  <ul class="product-list">
-    @for (product of productos; track $index) {
-      <li class="product-card">
-        <div class="product-details">
-          <h3>Modelo : {{ product.modelo }}</h3>
-          <img
-            [src]="product.imagen"
-            alt="{{ product.modelo }}"
-            class="product-image"
-          />
-          <p>Stock : {{ product.stock }}</p>
-          <p>Precio : {{ product.precio | currency }}</p>
-        </div>
-      </li>
-    }
-  </ul>
+<ul class="product-list">
+  @for (product of productos; track $index) {
+  <li class="product-card">
+    <div class="product-details">
+      <h3>Modelo : {{ product.modelo }}</h3>
+      <img
+        [src]="product.imagen"
+        alt="{{ product.modelo }}"
+        class="product-image"
+      />
+      <p>Stock : {{ product.stock }}</p>
+      <p>Precio : {{ product.precio | currency }}</p>
+    </div>
+  </li>
+  }
+</ul>
 }
 
 <h2>Agregar nuevo producto:</h2>
@@ -36,8 +36,16 @@
       type="text"
       class="form-control"
     />
-    <div class="error" *ngIf="productoForm.get('modelo')?.touched && productoForm.get('modelo')?.invalid">
-      <small *ngIf="productoForm.get('modelo')?.errors?.['required']">EL modelo es obligatorio.</small>
+    <div
+      class="error"
+      *ngIf="
+        productoForm.get('modelo')?.touched &&
+        productoForm.get('modelo')?.invalid
+      "
+    >
+      <small *ngIf="productoForm.get('modelo')?.errors?.['required']"
+        >EL modelo es obligatorio.</small
+      >
     </div>
   </div>
 
@@ -49,9 +57,19 @@
       type="number"
       class="form-control"
     />
-    <div class="error" *ngIf="productoForm.get('precio')?.touched && productoForm.get('precio')?.invalid">
-      <small *ngIf="productoForm.get('precio')?.errors?.['required']">El precio es obligatorio.</small>
-      <small *ngIf="productoForm.get('precio')?.errors?.['min']">El precio no puede ser negativo.</small>
+    <div
+      class="error"
+      *ngIf="
+        productoForm.get('precio')?.touched &&
+        productoForm.get('precio')?.invalid
+      "
+    >
+      <small *ngIf="productoForm.get('precio')?.errors?.['required']"
+        >El precio es obligatorio.</small
+      >
+      <small *ngIf="productoForm.get('precio')?.errors?.['min']"
+        >El precio no puede ser negativo.</small
+      >
     </div>
   </div>
 
@@ -63,9 +81,18 @@
       type="number"
       class="form-control"
     />
-    <div class="error" *ngIf="productoForm.get('stock')?.touched && productoForm.get('stock')?.invalid">
-      <small *ngIf="productoForm.get('stock')?.errors?.['required']">El stock es obligatorio.</small>
-      <small *ngIf="productoForm.get('stock')?.errors?.['min']">El stock no puede ser negativo.</small>
+    <div
+      class="error"
+      *ngIf="
+        productoForm.get('stock')?.touched && productoForm.get('stock')?.invalid
+      "
+    >
+      <small *ngIf="productoForm.get('stock')?.errors?.['required']"
+        >El stock es obligatorio.</small
+      >
+      <small *ngIf="productoForm.get('stock')?.errors?.['min']"
+        >El stock no puede ser negativo.</small
+      >
     </div>
   </div>
 
@@ -77,8 +104,16 @@
       type="text"
       class="form-control"
     />
-    <div class="error" *ngIf="productoForm.get('imagen')?.touched && productoForm.get('imagen')?.invalid">
-      <small *ngIf="productoForm.get('imagen')?.errors?.['required']">La imagen es obligatoria.</small>
+    <div
+      class="error"
+      *ngIf="
+        productoForm.get('imagen')?.touched &&
+        productoForm.get('imagen')?.invalid
+      "
+    >
+      <small *ngIf="productoForm.get('imagen')?.errors?.['required']"
+        >La imagen es obligatoria.</small
+      >
     </div>
   </div>
 
@@ -90,55 +125,85 @@
       type="text"
       class="form-control"
     />
-    <div class="error" *ngIf="productoForm.get('detalle')?.touched && productoForm.get('detalle')?.invalid">
-      <small *ngIf="productoForm.get('detalle')?.errors?.['required']">El detalle es obligatorio.</small>
+    <div
+      class="error"
+      *ngIf="
+        productoForm.get('detalle')?.touched &&
+        productoForm.get('detalle')?.invalid
+      "
+    >
+      <small *ngIf="productoForm.get('detalle')?.errors?.['required']"
+        >El detalle es obligatorio.</small
+      >
     </div>
   </div>
 
   <div class="form-group">
     <label for="marca">Marca:</label>
-    <select id="marca" formControlName="marca" class="form-control select-arrow">
+    <select
+      id="marca"
+      formControlName="marca"
+      class="form-control select-arrow"
+    >
       @for (marca of marcas; track marca.id) {
-        <option [value]="marca.id">{{ marca.nombre }}</option>
+      <option [value]="marca.id">{{ marca.nombre }}</option>
       }
     </select>
   </div>
 
   <div class="form-group">
     <label for="rodado">Rodado:</label>
-    <select id="rodado" formControlName="rodado" class="form-control select-arrow">
+    <select
+      id="rodado"
+      formControlName="rodado"
+      class="form-control select-arrow"
+    >
       @for (r of rodados; track $index) {
-        <option [value]="r">{{ r }}</option>
+      <option [value]="r">{{ r }}</option>
       }
     </select>
   </div>
 
   <div class="form-group">
     <label for="estilo">Estilo:</label>
-    <select id="estilo" formControlName="estilo" class="form-control select-arrow">
+    <select
+      id="estilo"
+      formControlName="estilo"
+      class="form-control select-arrow"
+    >
       @for (estilo of estilos; track estilo.id) {
-        <option [value]="estilo.id">{{ estilo.nombre }}</option>
+      <option [value]="estilo.id">{{ estilo.nombre }}</option>
       }
     </select>
   </div>
 
   <div class="form-group">
     <label for="material">Material:</label>
-    <select id="material" formControlName="material" class="form-control select-arrow">
+    <select
+      id="material"
+      formControlName="material"
+      class="form-control select-arrow"
+    >
       @for (m of materiales; track m.id) {
-        <option [value]="m.id">{{ m.nombre }}</option>
+      <option [value]="m.id">{{ m.nombre }}</option>
       }
     </select>
   </div>
 
   <div class="form-group">
     <label for="color">Color:</label>
-    <select id="color" formControlName="color" class="form-control select-arrow">
+    <select
+      id="color"
+      formControlName="color"
+      class="form-control select-arrow"
+    >
       @for (c of colores; track c.id) {
-        <option [value]="c.id">{{ c.nombre }}</option>
+      <option [value]="c.id">{{ c.nombre }}</option>
       }
     </select>
   </div>
 
-  <button type="submit" [disabled]="!productoForm.valid" class="btn">Crear Producto</button>
+  <button type="submit" [disabled]="!productoForm.valid" class="page-btn">
+    Crear Producto
+  </button>
 </form>

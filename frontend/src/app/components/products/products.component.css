@@ -40,12 +40,6 @@ form {
   }
 }
 
-button {
-  border: 1px solid;
-  border-radius: 5px;
-  padding: 5px 10px;
-}
-
 .btn-reset {
   display: flex;
   align-items: center;
@@ -206,20 +200,6 @@ button[type="submit"] {
   height: 400px;
   border-radius: 15px;
   box-shadow: 8px 8px 10px #5353536e;
-}
-
-.item-card-btn {
-  padding: 10px;
-  font-family: Arial;
-  border-width: 1px;
-  color: #fff;
-  border-color: #3866a3;
-  font-weight: bold;
-  border-radius: 20px;
-  box-shadow: 0px 1px 0px 0px #bee2f9;
-  text-shadow: 0px 1px 0px #7cacde;
-  background: linear-gradient(#63b8ee, #468ccf);
-  text-decoration: none;
 }
 
 .item-card:hover {
