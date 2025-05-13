@@ -21,32 +21,46 @@ h2 {
 
 .product-card {
   background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px; 
-  width: 250px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 20px;
+  width: 260px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* CENTRA TODO horizontalmente */
+  justify-content: flex-start; /* Asegura que el contenido empiece desde arriba */
+  text-align: center; /* Centra texto dentro de la card */
+  gap: 10px; /* Espaciado vertical entre elementos */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .product-image {
-  width: 100%;
-  height: auto;
+  width: 80%;
+  max-width: 200px;
+  height: 200px;
+  object-fit: contain; /* Evita que se deforme la imagen */
   border-radius: 8px;
-  margin-bottom: 10px;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
 }
 
 .product-details h3 {
-  margin: 0 0 10px;
+  margin: 0;
   font-size: 1.2em;
-  text-align: center;
+  font-weight: bold;
 }
 
 .product-details p {
-  margin: 5px 0;
-  text-align: center;
+  margin: 0;
+  font-size: 0.95em;
+  color: #555;
 }
 
 .product-link {
