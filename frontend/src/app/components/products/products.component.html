@@ -1,12 +1,66 @@
 <main>
   <h1>Productos en venta:</h1>
+  <button class="show-filters" (click)="showOrHideFilters()">
+    <img src="../../../assets/icons/filter.svg" />
+  </button>
+  <section class="filters">
+    <form (ngSubmit)="onSubmit(form.value)" #form="ngForm" class="initial">
+      <label
+        >Marca
+        <select id="marca" name="marca" ngModel>
+          <option value="">Seleccionar</option>
+          @for (brand of brands; track $index) {
+          <option value="{{ brand }}">{{ brand }}</option>
+          }
+        </select>
+      </label>
+      <label
+        >Estilo
+        <select id="estilo" name="estilo" ngModel>
+          <option value="">Seleccionar</option>
+          @for (style of styles; track $index) {
+          <option value="{{ style }}">{{ style }}</option>
+          }
+        </select>
+      </label>
+      <label class="price-range">
+        <div>
+          <p>Precio</p>
+          <sub>
+            $0 -
+            {{ selectedPrice | currency : "$" : "symbol" : "1.0" }}
+          </sub>
+        </div>
+        <input
+          type="range"
+          min="5000"
+          max="{{ maxPrice }}"
+          value="{{ selectedPrice }}"
+          step="5000"
+          id="precio"
+          name="precio"
+          ngModel
+          (input)="onPriceChange($event)"
+        />
+      </label>
+      <button class="btn-reset" type="reset" (click)="resetFilters()">
+        <img src="../../../assets/icons/reload.svg" />Limpiar filtros
+      </button>
+      <button type="submit">Buscar</button>
+    </form>
+  </section>
   <div class="main-section">
     @if (loading){
     <app-loading></app-loading>
-    } @for (bike of bikes; track $index) {
+    } @if (bikes.length !== 0 && filteredBikes.length === 0) {
+    <div class="no-results">
+      <h3>No hay productos que cumplan con el criterio de búsqueda</h3>
+      <button class="btn-reset" (click)="resetFilters()">Limpiar filtros</button>
+    </div>
+    } @for (bike of filteredBikes; track $index) {
     <div class="item-card">
       <img [src]="bike.imagen" [alt]="bike.marca" />
-      <h2>{{ bike.marca_descripcion }} {{ bike.modelo }}</h2>
+      <h2>{{ bike.marca }} {{ bike.modelo }}</h2>
       <h3>{{ bike.precio | currency : "$" : "symbol" : "1.2-2" }}</h3>
       <a class="item-card-btn" [routerLink]="'/productos/' + bike.id"
         >Ver detalle</a

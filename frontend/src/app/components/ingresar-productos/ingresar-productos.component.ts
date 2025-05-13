@@ -66,10 +66,10 @@ export class IngresarProductosComponent implements OnInit {
     this.obtenerProductos();
     this.productoForm = this.formBuilder.group({
       modelo: ['', Validators.required],
-      precio: ['', Validators.required],
-      stock: ['', Validators.required],
+      precio: ['', [Validators.required, Validators.min(0)]],
+      stock: ['', [Validators.required, Validators.min(0)]],
       imagen: ['', Validators.required],
-      detalle: [''],
+      detalle: ['', Validators.required],
       marca: [this.marcas[0].id, Validators.required],
       rodado: [this.rodados[0].id, Validators.required],
       estilo: [this.estilos[0].id, Validators.required],
@@ -92,33 +92,36 @@ export class IngresarProductosComponent implements OnInit {
     event.preventDefault();
 
     if (this.productoForm.valid) {
-      if (this.productoForm.valid) {
-        const nuevoProducto: Product = {
-          modelo: this.productoForm.value.modelo,
-          precio: this.productoForm.value.precio,
-          stock: this.productoForm.value.stock,
-          imagen: this.productoForm.value.imagen,
-          detalle: this.productoForm.value.detalle,
-          marca: this.productoForm.value.marca,
-          rodado: this.productoForm.value.rodado,
-          estilo: this.productoForm.value.estilo,
-          material: this.productoForm.value.material,
-          color: this.productoForm.value.color,
-        };
+      const nuevoProducto: Product = {
+        modelo: this.productoForm.value.modelo,
+        precio: this.productoForm.value.precio,
+        stock: this.productoForm.value.stock,
+        imagen: this.productoForm.value.imagen,
+        detalle: this.productoForm.value.detalle,
+        marca: this.productoForm.value.marca,
+        rodado: this.productoForm.value.rodado,
+        estilo: this.productoForm.value.estilo,
+        material: this.productoForm.value.material,
+        color: this.productoForm.value.color,
+      };
 
-        console.log('Enviando al servidor...', nuevoProducto);
+      console.log('Enviando al servidor...', nuevoProducto);
 
-        this.producstService.postProducts(nuevoProducto).subscribe({
-          next: (data) => {
-            console.log('Producto creado:', data);
-            this.obtenerProductos();
-            this.productoForm.reset();
-          },
-          error: (error) => console.error(error),
-        });
-      } else {
-        this.productoForm.markAllAsTouched();
-      }
+      this.producstService.postProducts(nuevoProducto).subscribe({
+        next: (data) => {
+          alert('Producto creado con exito');
+          console.log('Producto creado:', data);
+          this.obtenerProductos();
+          this.productoForm.reset();
+        },
+        error: 
+        (error) => {
+          alert('Error al crear el producto, por favor intenta de nuevo');
+          console.error(error);
+        }
+      });
+    } else {
+      this.productoForm.markAllAsTouched();
     }
   }
 }

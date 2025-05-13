@@ -15,7 +15,7 @@
       <a [routerLink]="'/productos'">catálogo</a>
     </h3>
     <img
-      src="../../../assets/imgs/carrito-vacio.png"
+      src="../../../assets/img/carrito-vacio.webp"
       alt="Imagen de un carrito de supermercado vacío"
     />
   </section>
@@ -31,7 +31,7 @@
   <div class="cart-total">
     <h2>Importe total:</h2>
     <h3>{{ totalAmount | currency : "$" : "symbol" : "1.2-2" }}</h3>
-    <button class="pay-btn" (click)="realizarCompra()">Comprar</button>
+    <button class="page-btn" (click)="realizarCompra()">Comprar</button>
   </div>
   } } }
 </main>
