@@ -116,3 +116,10 @@ h2 {
   padding-right: 30px; 
   font-size: 1em;
 }
+.text-black {
+  color: black;
+}
+
+.text-danger {
+  color: red;
+}
