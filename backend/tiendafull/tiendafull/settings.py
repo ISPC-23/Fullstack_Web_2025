@@ -82,10 +82,10 @@ WSGI_APPLICATION = "tiendafull.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "b7nwp7h0fuiszk7hshlf",
-        "USER": "umullnl7aszm6g3k",
-        "PASSWORD": "eiexNJuJcDqYtJHkxbi0",
-        "HOST": "b7nwp7h0fuiszk7hshlf-mysql.services.clever-cloud.com",
+        "NAME": "tiendafull",
+        "USER": "root",
+        "PASSWORD": "",
+        "HOST": "localhost",
         "PORT": "3306",
     }
 }

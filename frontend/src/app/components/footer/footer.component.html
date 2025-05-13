@@ -1,24 +1,51 @@
-<footer class="contact-info">
-  <p>¡Síguenos en redes sociales!</p>
-  <ul>
-    <li>
-      <a href="https://www.facebook.com/" target="_blank"
-        ><i class="fa-brands fa-facebook"></i>
-        <fa-icon [icon]="faFacebook"></fa-icon
-      ></a>
-    </li>
-    <li>
-      <a href="https://twitter.com/" target="_blank"
-        ><fa-icon [icon]="faTwitter"></fa-icon
-        ><i class="fa-brands fa-twitter"></i
-      ></a>
-    </li>
-    <li>
-      <a href="https://www.instagram.com/" target="_blank"
-        ><fa-icon [icon]="faInstagram"></fa-icon
-        ><i class="fa-brands fa-instagram"></i
-      ></a>
-    </li>
-  </ul>
-  <p>Teléfono: +54 (351) 456-7890</p>
+<footer class="footer">
+  <div class="footer-content">
+    <!-- Redes sociales -->
+    <div class="social-media">
+      <p>¡Síguenos en redes sociales!</p>
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/" target="_blank">
+            <fa-icon [icon]="faFacebook"></fa-icon>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/" target="_blank">
+            <fa-icon [icon]="faTwitter"></fa-icon>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/" target="_blank">
+            <fa-icon [icon]="faInstagram"></fa-icon>
+          </a>
+        </li>
+      </ul>
+      <p class="phone">Teléfono: +54 (351) 456-7890</p>
+    </div>
+
+    <!-- Descarga la app -->
+    <div class="app-download">
+      <p>Descargá nuestra app móvil</p>
+      <div class="download-container">
+        <a href="https://play.google.com/" target="_blank" rel="noopener">
+          <img
+            src="../../../assets/img/google-play-badge.webp"
+            alt="Disponible en Google Play"
+            class="play-badge"
+          />
+        </a>
+        <a
+          href="../../../assets/img/qr-playstore.webp"
+          target="_blank"
+          rel="noopener"
+        >
+          <img
+            src="../../../assets/img/qr-playstore.webp"
+            alt="Código QR Google Play"
+            class="qr-code"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
 </footer>

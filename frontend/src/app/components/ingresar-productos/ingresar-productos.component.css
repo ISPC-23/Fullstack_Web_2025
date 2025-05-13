@@ -16,16 +16,16 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px; /* Reduced gap for smaller cards */
+  gap: 15px; 
 }
 
 .product-card {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 10px; /* Reduced padding for smaller cards */
-  width: 200px; /* Reduced width for smaller cards */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px; 
+  width: 250px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,7 +40,7 @@ h2 {
 
 .product-details h3 {
   margin: 0 0 10px;
-  font-size: 1em;
+  font-size: 1.2em;
   text-align: center;
 }
 
@@ -64,7 +64,7 @@ h2 {
 }
 
 .product-form {
-  max-width: 300px;
+  max-width: 400px;
   margin: 20px auto;
   padding: 15px;
   background-color: #f9f9f9;
@@ -74,7 +74,7 @@ h2 {
 }
 
 .form-group {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .form-group label {
@@ -88,6 +88,7 @@ h2 {
   padding: 6px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 1em;
 }
 
 .form-group .form-control:focus {
@@ -100,24 +101,25 @@ h2 {
   font-size: 0.8em;
 }
 
-.btn {
-  display: block;
-  width: 100%;
-  padding: 8px;
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #218838;
-}
-
 .loading-section {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 200px;
+}
+.select-arrow {
+  -webkit-appearance: none;  
+  -moz-appearance: none;    
+  appearance: none;        
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"><path d="M5 7L10 12L15 7H5Z" fill="%23222"></path></svg>') no-repeat right center;
+  background-size: 16px 16px;
+  padding-right: 30px; 
+  font-size: 1em;
+}
+.text-black {
+  color: black;
+}
+
+.text-danger {
+  color: red;
 }

@@ -9,7 +9,7 @@
       <div class="add-to-cart-section">
         <button
           type="button"
-          class="item-cart-btn"
+          class="page-btn"
           (click)="addItemCart(bike.id)"
         >
           <svg
@@ -48,18 +48,18 @@
       }
     </div>
     <div class="detail-section">
-      <h1>{{ bike.marca }} {{ bike.modelo }}</h1>
+      <h1>{{ bike.marca_descripcion }} {{ bike.modelo }}</h1>
       <h2 class="price">
         {{ bike.precio | currency : "$" : "symbol" : "1.2-2" }}
       </h2>
       <div>
         <h2>Detalles</h2>
         <ul>
-          <li><b>Material:</b> {{ bike.material }}</li>
-          <li><b>Marca:</b> {{ bike.marca }}</li>
-          <li><b>Estilo:</b> {{ bike.estilo }}</li>
-          <li><b>Color:</b> {{ bike.color }}</li>
-          <li><b>Rodado:</b> {{ bike.rodado }}</li>
+          <li><b>Material:</b> {{ bike.material_descripcion }}</li>
+          <li><b>Marca:</b> {{ bike.marca_descripcion }}</li>
+          <li><b>Estilo:</b> {{ bike.estilo_descripcion }}</li>
+          <li><b>Color:</b> {{ bike.color_descripcion }}</li>
+          <li><b>Rodado:</b> {{ bike.rodado_descripcion }}</li>
         </ul>
       </div>
       <div>

@@ -19,7 +19,7 @@ nav {
   gap: 5px;
 
   & li img {
-    background-color: #525f68;
+    background-color: #4a529762;
     border-radius: 50%;
     padding: 5px;
     transition: all 0.2s ease-in-out;

@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { WhatsappButtonComponent } from './components/whatsapp-button/whatsapp-button.component';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     CustomerDashboardComponent,
     ContactPageComponent,
     AboutUsComponent,
+    WhatsappButtonComponent,
   ],
   templateUrl: './app.component.html',
   styles: '',

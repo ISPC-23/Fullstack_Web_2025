@@ -19,6 +19,43 @@ export class IngresarProductosComponent implements OnInit {
   productoForm!: FormGroup;
   isLoading = true;
 
+  marcas = [
+    { id: 1, nombre: 'Venzo' },
+    { id: 2, nombre: 'Trek' },
+    { id: 3, nombre: 'Oxea' },
+    { id: 4, nombre: 'Vairo' },
+    { id: 5, nombre: 'Merida' }
+  ];
+
+  rodados = [ 
+    { id: 1, nombre: '29' },
+    { id: 2, nombre: '27.5' },
+    { id: 3, nombre: '26' },
+    { id: 4, nombre: '20' }
+  ];  
+
+  estilos = [
+    { id: 3, nombre: 'BMX' },
+    { id: 2, nombre: 'Rutera' },
+    { id: 1, nombre: 'Mountain Bike' }
+  ];
+
+  materiales = [
+    { id: 3, nombre: 'Hierro' },
+    { id: 2, nombre: 'Aluminio' },
+    { id: 1, nombre: 'Carbono' }
+  ];
+
+  colores = [
+    { id: 7, nombre: 'Rosa' },
+    { id: 6, nombre: 'Amarillo' },
+    { id: 5, nombre: 'Verde' },
+    { id: 4, nombre: 'Azul' },
+    { id: 3, nombre: 'Blanco' },
+    { id: 2, nombre: 'Negro' },
+    { id: 1, nombre: 'Rojo' }
+  ];
+
   constructor(
     private producstService: ProductsService,
     private formBuilder: FormBuilder
@@ -28,15 +65,15 @@ export class IngresarProductosComponent implements OnInit {
     this.obtenerProductos();
     this.productoForm = this.formBuilder.group({
       modelo: ['', Validators.required],
-      precio: ['', Validators.required],
-      stock: ['', Validators.required],
+      precio: ['', [Validators.required, Validators.min(0)]],
+      stock: ['', [Validators.required, Validators.min(0)]],
       imagen: ['', Validators.required],
-      detalle: [''],
-      marca: ['', Validators.required],
-      rodado: ['', Validators.required],
-      estilo: ['', Validators.required],
-      material: ['', Validators.required],
-      color: ['', Validators.required],
+      detalle: ['', [Validators.required, Validators.maxLength(500)]],
+      marca: [this.marcas[0].id, Validators.required],
+      rodado: [this.rodados[0].id, Validators.required],
+      estilo: [this.estilos[0].id, Validators.required],
+      material: [this.materiales[0].id, Validators.required],
+      color: [this.colores[0].id, Validators.required],
     });
   }
 
@@ -54,33 +91,40 @@ export class IngresarProductosComponent implements OnInit {
     event.preventDefault();
 
     if (this.productoForm.valid) {
-      if (this.productoForm.valid) {
-        const nuevoProducto: Product = {
-          modelo: this.productoForm.value.modelo,
-          precio: this.productoForm.value.precio,
-          stock: this.productoForm.value.stock,
-          imagen: this.productoForm.value.imagen,
-          detalle: this.productoForm.value.detalle,
-          marca: this.productoForm.value.marca,
-          rodado: this.productoForm.value.rodado,
-          estilo: this.productoForm.value.estilo,
-          material: this.productoForm.value.material,
-          color: this.productoForm.value.color,
-        };
+      const nuevoProducto: Product = {
+        modelo: this.productoForm.value.modelo,
+        precio: this.productoForm.value.precio,
+        stock: this.productoForm.value.stock,
+        imagen: this.productoForm.value.imagen,
+        detalle: this.productoForm.value.detalle,
+        marca: this.productoForm.value.marca,
+        rodado: this.productoForm.value.rodado,
+        estilo: this.productoForm.value.estilo,
+        material: this.productoForm.value.material,
+        color: this.productoForm.value.color,
+      };
 
-        console.log('Enviando al servidor...', nuevoProducto);
+      console.log('Enviando al servidor...', nuevoProducto);
 
-        this.producstService.postProducts(nuevoProducto).subscribe({
-          next: (data) => {
-            console.log('Producto creado:', data);
-            this.obtenerProductos();
-            this.productoForm.reset();
-          },
-          error: (error) => console.error(error),
-        });
-      } else {
-        this.productoForm.markAllAsTouched();
-      }
+      this.producstService.postProducts(nuevoProducto).subscribe({
+        next: (data) => {
+          alert('Producto creado con exito');
+          console.log('Producto creado:', data);
+          this.obtenerProductos();
+          this.productoForm.reset();
+        },
+        error: (error) => {
+          alert('Error al crear el producto, por favor intenta de nuevo');
+          console.error(error);
+        }
+      });
+    } else {
+      this.productoForm.markAllAsTouched();
     }
+  }
+
+  // Método adicional para contar caracteres restantes en el campo "detalle"
+  get remainingCharacters(): number {
+    return 500 - (this.productoForm.get('detalle')?.value?.length || 0);
   }
 }
