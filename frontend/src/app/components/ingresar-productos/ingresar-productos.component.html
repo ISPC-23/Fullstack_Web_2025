@@ -117,26 +117,38 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="detalle">Detalle:</label>
-    <input
-      id="detalle"
-      formControlName="detalle"
-      type="text"
-      class="form-control"
-    />
-    <div
-      class="error"
-      *ngIf="
-        productoForm.get('detalle')?.touched &&
-        productoForm.get('detalle')?.invalid
-      "
-    >
-      <small *ngIf="productoForm.get('detalle')?.errors?.['required']"
-        >El detalle es obligatorio.</small
-      >
-    </div>
+<div class="form-group">
+  <label for="detalle">Detalle:</label>
+  <input
+    id="detalle"
+    formControlName="detalle"
+    type="text"
+    class="form-control"
+    maxlength="500"
+  />
+  
+  <!-- Mensaje de error -->
+  <div
+    class="error"
+    *ngIf="productoForm.get('detalle')?.touched && productoForm.get('detalle')?.invalid"
+  >
+    <small *ngIf="productoForm.get('detalle')?.errors?.['required']">
+      El detalle es obligatorio.
+    </small>
+    <small *ngIf="productoForm.get('detalle')?.errors?.['maxlength']">
+      El detalle no puede superar los 500 caracteres.
+    </small>
   </div>
+
+  <!-- Contador de caracteres -->
+  <div class="error">
+    <small [ngClass]="{'text-black': remainingCharacters > 0, 'text-danger': remainingCharacters <= 0}">
+      Caracteres restantes: {{ remainingCharacters }}
+    </small>
+  </div>
+</div>
+
+
 
   <div class="form-group">
     <label for="marca">Marca:</label>

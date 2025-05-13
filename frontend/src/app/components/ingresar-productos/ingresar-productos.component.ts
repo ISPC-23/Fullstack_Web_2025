@@ -32,7 +32,7 @@ export class IngresarProductosComponent implements OnInit {
     { id: 2, nombre: '27.5' },
     { id: 3, nombre: '26' },
     { id: 4, nombre: '20' }
-    ];  
+  ];  
 
   estilos = [
     { id: 3, nombre: 'BMX' },
@@ -56,7 +56,6 @@ export class IngresarProductosComponent implements OnInit {
     { id: 1, nombre: 'Rojo' }
   ];
 
-
   constructor(
     private producstService: ProductsService,
     private formBuilder: FormBuilder
@@ -69,7 +68,7 @@ export class IngresarProductosComponent implements OnInit {
       precio: ['', [Validators.required, Validators.min(0)]],
       stock: ['', [Validators.required, Validators.min(0)]],
       imagen: ['', Validators.required],
-      detalle: ['', Validators.required],
+      detalle: ['', [Validators.required, Validators.maxLength(500)]],
       marca: [this.marcas[0].id, Validators.required],
       rodado: [this.rodados[0].id, Validators.required],
       estilo: [this.estilos[0].id, Validators.required],
@@ -114,8 +113,7 @@ export class IngresarProductosComponent implements OnInit {
           this.obtenerProductos();
           this.productoForm.reset();
         },
-        error: 
-        (error) => {
+        error: (error) => {
           alert('Error al crear el producto, por favor intenta de nuevo');
           console.error(error);
         }
@@ -123,5 +121,10 @@ export class IngresarProductosComponent implements OnInit {
     } else {
       this.productoForm.markAllAsTouched();
     }
+  }
+
+  // Método adicional para contar caracteres restantes en el campo "detalle"
+  get remainingCharacters(): number {
+    return 500 - (this.productoForm.get('detalle')?.value?.length || 0);
   }
 }
