@@ -9,7 +9,13 @@ export interface Product {
   estilo: string;
   material: string;
   rodado: string;
-  stock: number;
+  stock: number;  
+  marca_descripcion?: string;
+  rodado_descripcion?: string;
+  estilo_descripcion?: string;
+  material_descripcion?: string;
+  color_descripcion?: string;
+  
 }
 
 export interface Cart {

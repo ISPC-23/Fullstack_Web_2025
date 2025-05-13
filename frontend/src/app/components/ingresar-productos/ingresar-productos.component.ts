@@ -20,34 +20,40 @@ export class IngresarProductosComponent implements OnInit {
   isLoading = true;
 
   marcas = [
-    { id: 1, nombre: 'Merida' },
-    { id: 2, nombre: 'Vairo' },
+    { id: 1, nombre: 'Venzo' },
+    { id: 2, nombre: 'Trek' },
     { id: 3, nombre: 'Oxea' },
-    { id: 4, nombre: 'Trek' },
-    { id: 5, nombre: 'Venzo' }
+    { id: 4, nombre: 'Vairo' },
+    { id: 5, nombre: 'Merida' }
   ];
 
-  rodados = [20, 26, 27.5, 29];
+  rodados = [ 
+    { id: 1, nombre: '29' },
+    { id: 2, nombre: '27.5' },
+    { id: 3, nombre: '26' },
+    { id: 4, nombre: '20' }
+    ];  
 
   estilos = [
-    { id: 1, nombre: 'BMX' },
+    { id: 3, nombre: 'BMX' },
     { id: 2, nombre: 'Rutera' },
-    { id: 3, nombre: 'Mountain Bike' }
+    { id: 1, nombre: 'Mountain Bike' }
   ];
 
   materiales = [
-    { id: 1, nombre: 'Hierro' },
+    { id: 3, nombre: 'Hierro' },
     { id: 2, nombre: 'Aluminio' },
-    { id: 3, nombre: 'Carbono' }
+    { id: 1, nombre: 'Carbono' }
   ];
 
   colores = [
-    { id: 1, nombre: 'Amarillo' },
-    { id: 2, nombre: 'Verde' },
-    { id: 3, nombre: 'Azul' },
-    { id: 4, nombre: 'Blanco' },
-    { id: 5, nombre: 'Negro' },
-    { id: 6, nombre: 'Rojo' }
+    { id: 7, nombre: 'Rosa' },
+    { id: 6, nombre: 'Amarillo' },
+    { id: 5, nombre: 'Verde' },
+    { id: 4, nombre: 'Azul' },
+    { id: 3, nombre: 'Blanco' },
+    { id: 2, nombre: 'Negro' },
+    { id: 1, nombre: 'Rojo' }
   ];
 
 
@@ -65,7 +71,7 @@ export class IngresarProductosComponent implements OnInit {
       imagen: ['', Validators.required],
       detalle: [''],
       marca: [this.marcas[0].id, Validators.required],
-      rodado: [this.rodados[0], Validators.required],
+      rodado: [this.rodados[0].id, Validators.required],
       estilo: [this.estilos[0].id, Validators.required],
       material: [this.materiales[0].id, Validators.required],
       color: [this.colores[0].id, Validators.required],

@@ -21,7 +21,7 @@
     }
   </ul>
 }
-
+  
 <h2>Agregar nuevo producto:</h2>
 <form
   [formGroup]="productoForm"
@@ -91,7 +91,7 @@
     <label for="marca">Marca:</label>
     <select id="marca" formControlName="marca" class="form-control select-arrow">
       @for (marca of marcas; track marca.id) {
-        <option [value]="marca.id">{{ marca.nombre }}</option>
+        <option [ngValue]="marca.id">{{ marca.nombre }}</option>
       }
     </select>
   </div>
@@ -99,8 +99,8 @@
   <div class="form-group">
     <label for="rodado">Rodado:</label>
     <select id="rodado" formControlName="rodado" class="form-control select-arrow">
-      @for (r of rodados; track $index) {
-        <option [value]="r">{{ r }}</option>
+      @for (r of rodados; track r.id) {
+        <option [ngValue]="r.id">{{ r.nombre }}</option>
       }
     </select>
   </div>
@@ -109,7 +109,7 @@
     <label for="estilo">Estilo:</label>
     <select id="estilo" formControlName="estilo" class="form-control select-arrow">
       @for (estilo of estilos; track estilo.id) {
-        <option [value]="estilo.id">{{ estilo.nombre }}</option>
+        <option [ngValue]="estilo.id">{{ estilo.nombre }}</option>
       }
     </select>
   </div>
@@ -118,7 +118,7 @@
     <label for="material">Material:</label>
     <select id="material" formControlName="material" class="form-control select-arrow">
       @for (m of materiales; track m.id) {
-        <option [value]="m.id">{{ m.nombre }}</option>
+        <option [ngValue]="m.id">{{ m.nombre }}</option>
       }
     </select>
   </div>
@@ -127,7 +127,7 @@
     <label for="color">Color:</label>
     <select id="color" formControlName="color" class="form-control select-arrow">
       @for (c of colores; track c.id) {
-        <option [value]="c.id">{{ c.nombre }}</option>
+        <option [ngValue]="c.id">{{ c.nombre }}</option>
       }
     </select>
   </div>

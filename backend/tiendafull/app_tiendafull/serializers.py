@@ -83,42 +83,44 @@ class PaymentTypeSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    marca = serializers.SerializerMethodField()
-    rodado = serializers.SerializerMethodField()
-    estilo = serializers.SerializerMethodField()
-    material = serializers.SerializerMethodField()
-    color = serializers.SerializerMethodField()
+    
+    marca_descripcion = serializers.SerializerMethodField()
+    rodado_descripcion = serializers.SerializerMethodField()
+    estilo_descripcion = serializers.SerializerMethodField()
+    material_descripcion = serializers.SerializerMethodField()
+    color_descripcion = serializers.SerializerMethodField()
+    marca = serializers.PrimaryKeyRelatedField(queryset=BrandType.objects.all())
+    rodado = serializers.PrimaryKeyRelatedField(queryset=WheelSizeType.objects.all())
+    estilo = serializers.PrimaryKeyRelatedField(queryset=StyleType.objects.all())
+    material = serializers.PrimaryKeyRelatedField(queryset=MaterialType.objects.all())
+    color = serializers.PrimaryKeyRelatedField(queryset=ColorType.objects.all())
 
     class Meta:
         model = Product
         fields = [
-            "id",
-            "modelo",
-            "precio",
-            "stock",
-            "imagen",
-            "detalle",
-            "marca",
-            "rodado",
-            "estilo",
-            "material",
-            "color",
+            "id", "modelo", "precio", "stock", "imagen", "detalle",
+            "marca", "marca_descripcion",
+            "rodado", "rodado_descripcion",
+            "estilo", "estilo_descripcion",
+            "material", "material_descripcion",
+            "color", "color_descripcion"
         ]
 
-    def get_marca(self, obj):
+    def get_marca_descripcion(self, obj):
         return obj.marca.descripcion if obj.marca else None
 
-    def get_rodado(self, obj):
+    def get_rodado_descripcion(self, obj):
         return obj.rodado.descripcion if obj.rodado else None
 
-    def get_estilo(self, obj):
+    def get_estilo_descripcion(self, obj):
         return obj.estilo.descripcion if obj.estilo else None
 
-    def get_material(self, obj):
+    def get_material_descripcion(self, obj):
         return obj.material.descripcion if obj.material else None
 
-    def get_color(self, obj):
+    def get_color_descripcion(self, obj):
         return obj.color.descripcion if obj.color else None
+
 
 
 class CartDetailSerializer(serializers.ModelSerializer):
