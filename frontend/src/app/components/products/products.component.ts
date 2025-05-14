@@ -16,8 +16,8 @@ import type { Product } from '../../types/types';
 export class ProductsComponent {
   bikes: Product[] = [];
   filteredBikes: Product[] = [];
-  brands: string[] = [];
-  styles: string[] = [];
+  brands: (string | undefined)[] = [];
+  styles: (string | undefined)[] = [];
   maxPrice: number = 0;
   selectedPrice: number = 0;
   loading: boolean = true;
@@ -29,8 +29,14 @@ export class ProductsComponent {
         this.filteredBikes = bikesList;
         this.maxPrice = Math.max(...bikesList.map((bike) => bike.precio));
         this.selectedPrice = this.maxPrice;
-        this.brands = Array.from(new Set(bikesList.map((bike) => bike.marca)));
-        this.styles = Array.from(new Set(bikesList.map((bike) => bike.estilo)));
+        this.brands =
+          Array.from(
+            new Set(bikesList.map((bike) => bike.marca_descripcion))
+          ) || [];
+        this.styles =
+          Array.from(
+            new Set(bikesList.map((bike) => bike.estilo_descripcion))
+          ) || [];
       },
       error: (error) => console.error(error),
       complete: () => (this.loading = false),
@@ -40,8 +46,8 @@ export class ProductsComponent {
   onSubmit(formData: any): void {
     const { marca, estilo, precio } = formData;
     this.filteredBikes = this.bikes.filter((bike) => {
-      const isBrandMatch = marca ? bike.marca === marca : true;
-      const isStyleMatch = estilo ? bike.estilo === estilo : true;
+      const isBrandMatch = marca ? bike.marca_descripcion === marca : true;
+      const isStyleMatch = estilo ? bike.estilo_descripcion === estilo : true;
       const isPriceMatch = precio ? bike.precio <= Number(precio) : true;
 
       return isBrandMatch && isStyleMatch && isPriceMatch;
@@ -61,7 +67,10 @@ export class ProductsComponent {
   showOrHideFilters(): void {
     const filters = document.querySelector('form') as HTMLElement;
 
-    if (filters.classList.contains('hidden') || filters.classList.contains('initial')) {
+    if (
+      filters.classList.contains('hidden') ||
+      filters.classList.contains('initial')
+    ) {
       filters.classList.remove('hidden');
       filters.classList.remove('initial');
       filters.classList.add('visible');
