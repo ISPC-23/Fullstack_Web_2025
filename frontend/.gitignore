@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Personal wiki folder to be ignored
+FullStack2024.wiki/
