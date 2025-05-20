@@ -15,7 +15,6 @@ h1 {
   justify-content: center;
   align-items: stretch;
   background-color: #fff;
-
   max-width: 1050px;
   gap: 30px;
   margin: 40px auto;
@@ -24,9 +23,12 @@ h1 {
   box-shadow: 8px 8px 10px #5353536e;
 }
 
-.product-section div:first-child {
+/* Nuevo contenedor para la imagen, botón y cantidad */
+.image-controls-container {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .product-section img {
@@ -64,9 +66,37 @@ h1 {
 
 .add-to-cart-section {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
   align-items: center;
+  margin-top: 20px;
+}
+
+/* 🔵 Botón "Agregar" más llamativo y centrado */
+.btn-agregar {
+  background-color: #007bff; /* Un azul más llamativo */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px; /* Espacio entre la imagen y el botón */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  width: 90%;
+  max-width: 300px;
+  align-self: center;
+}
+
+.btn-agregar:hover {
+  background-color: #0056b3;
+}
+
+.cantidad-input {
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
 }
 
 .product-section h2 {
@@ -86,6 +116,11 @@ h1 {
     padding: 30px;
     border-radius: 15px;
     box-shadow: 8px 8px 10px #5353536e;
+  }
+
+  /* Aseguramos que el contenedor se centre también en pantallas más pequeñas */
+  .image-controls-container {
+    width: 100%;
   }
 
   .product-section img {
