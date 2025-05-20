@@ -11,8 +11,12 @@ import { RecoverPasswordComponent } from './components/recover-password/recover-
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { LogoutPageComponent } from './components/logout-page/logout-page.component';
+import { CheckoutComponent } from './components/checkout-component/checkout-component.component';
 import { IngresarProductosComponent } from './components/ingresar-productos/ingresar-productos.component';
 import { authGuard, loginGuard } from './auth.guard';
+import { SuccessComponent } from './components/mp-responses/success/success.component';
+import { FailureComponent } from './components/mp-responses/failure/failure.component';
+import { PendingComponent } from './components/mp-responses/pending/pending.component';
 export const routes: Routes = [
   { path: 'inicio', component: LandingPageComponent },
   { path: 'productos', component: ProductsComponent },
@@ -25,6 +29,12 @@ export const routes: Routes = [
   { path: 'contacto', component: ContactPageComponent },
   { path: 'acerca-de-nosotros', component: AboutUsComponent },
   { path: 'carrito', component: CartPageComponent, canActivate: [loginGuard] },
+  {path: 'checkout', component: CheckoutComponent, canActivate: [loginGuard]},
+  { path: 'success', component: SuccessComponent },
+  { path: 'failure', component: FailureComponent },
+  { path: 'pending', component: PendingComponent },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: '**', component: NotFoundPageComponent },
+  
+  
 ];

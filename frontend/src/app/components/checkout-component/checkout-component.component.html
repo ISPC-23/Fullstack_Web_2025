@@ -1,0 +1,21 @@
+<main>
+  @if (!isLoading && cart) {
+    <h1>Resumen de compra</h1>
+    <ul>
+      @for (item of cart.items; track $index) {
+        <li>
+          {{ item.cantidad }} x {{ item.producto.modelo }} — {{ item.producto.precio | currency:'USD' }}
+        </li>
+      }
+    </ul>
+
+    <h2>Total: {{ totalAmount | currency:'USD' }}</h2>
+
+    <button (click)="pagar()">Pagar</button>
+    <div id="wallet_container" style="margin-top: 20px;"></div>
+  } @else {
+    <div class="spinner-container">
+      <app-loading></app-loading>
+    </div>
+  }
+</main>

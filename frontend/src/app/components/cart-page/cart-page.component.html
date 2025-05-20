@@ -31,7 +31,7 @@
   <div class="cart-total">
     <h2>Importe total:</h2>
     <h3>{{ totalAmount | currency : "$" : "symbol" : "1.2-2" }}</h3>
-    <button class="page-btn" (click)="realizarCompra()">Comprar</button>
+    <a class="page-btn" [routerLink]="'/checkout'">Comprar</a>
   </div>
   } } }
 </main>
