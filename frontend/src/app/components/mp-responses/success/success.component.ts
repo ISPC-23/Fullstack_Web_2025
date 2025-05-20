@@ -1,18 +1,21 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CartService } from '../../../services/cart.service';
 import { OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-success',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterModule,],
   templateUrl: './success.component.html',
   styleUrl: './success.component.css'
 })
 export class SuccessComponent implements OnInit {
   estado: 'procesando' | 'exito' | 'error' = 'procesando';
   mensaje = '';
+  purchase: any = null;
+  details: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +33,8 @@ export class SuccessComponent implements OnInit {
           next: res => {
             this.estado = 'exito';
             this.mensaje = '¡Compra confirmada con éxito!';
+            this.purchase = res.purchase;
+            this.details = res.details;
           },
           error: err => {
             this.estado = 'error';

@@ -292,7 +292,7 @@ class MercadoPagoPreferenceView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        # Obtener items del carrito o los datos enviados para la compra
+
         items = request.data.get("items", [])
       
 
@@ -302,23 +302,23 @@ class MercadoPagoPreferenceView(APIView):
 
         sdk = mercadopago.SDK("TEST-7444883517933969-051911-01b0f5d4cf34b5295b6d8b8635459bfc-9650294")
 
-        # Formatear los items según lo que espera MercadoPago
+
         preference_items = []
         for item in items:
             preference_items.append({
                 "title": item.get("title"),
                 "quantity": int(item.get("quantity", 1)),
                 "unit_price": float(item.get("unit_price")),
-                "currency_id": "ARS"  # o la moneda que uses
+                "currency_id": "ARS"  
             })
 
         preference_data = {
             "items": preference_items,
       "payer": {
-        "email": request.user.email,  # asegúrate que el usuario tenga un email válido
+        "email": request.user.email, 
     },
     "back_urls": {
-        "success": "https://ambito.com",
+        "success": "https://tusitio.com/success",
         "failure": "https://tusitio.com/failure",
         "pending": "https://tusitio.com/pending"
     },
@@ -335,5 +335,5 @@ class MercadoPagoPreferenceView(APIView):
 
         return Response({
             "id": preference["id"],
-            "init_point": preference["init_point"]  # URL para iniciar pago
+            "init_point": preference["init_point"] 
         })
