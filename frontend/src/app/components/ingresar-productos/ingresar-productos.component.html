@@ -1,33 +1,48 @@
 <h2>Productos existentes:</h2>
 @if (isLoading) {
-<div class="loading-section">
-  <app-loading></app-loading>
-</div>
+  <div class="loading-section">
+    <app-loading></app-loading>
+  </div>
 } @else {
-<ul class="product-list">
-  @for (product of productos; track $index) {
-  <li class="product-card">
-    <div class="product-details">
-      <h3>Modelo : {{ product.modelo }}</h3>
-      <img
-        [src]="product.imagen"
-        alt="{{ product.modelo }}"
-        class="product-image"
-      />
-      <p>Stock : {{ product.stock }}</p>
-      <p>Precio : {{ product.precio | currency }}</p>
-    </div>
-  </li>
-  }
-</ul>
+  <ul class="product-list">
+    @for (product of productos; track $index) {
+      <li class="product-card">
+        <div class="product-details">
+          <h3>Modelo : {{ product.modelo }}</h3>
+          <img
+            [src]="product.imagen"
+            alt="{{ product.modelo }}"
+            class="product-image"
+          />
+          <p>Stock : {{ product.stock }}</p>
+          <p>Precio : {{ product.precio | currency }}</p>
+        </div>
+      </li>
+    }
+  </ul>
 }
-  
+
 <h2>Agregar nuevo producto:</h2>
 <form
   [formGroup]="productoForm"
   (ngSubmit)="crearProducto($event)"
   class="product-form"
 >
+  <!-- Marca -->
+  <div class="form-group">
+    <label for="marca">Marca:</label>
+    <select
+      id="marca"
+      formControlName="marca"
+      class="form-control select-arrow"
+    >
+      @for (marca of marcas; track marca.id) {
+        <option [ngValue]="marca.id">{{ marca.nombre }}</option>
+      }
+    </select>
+  </div>
+
+  <!-- Modelo -->
   <div class="form-group">
     <label for="modelo">Modelo:</label>
     <input
@@ -38,64 +53,71 @@
     />
     <div
       class="error"
-      *ngIf="
-        productoForm.get('modelo')?.touched &&
-        productoForm.get('modelo')?.invalid
-      "
+      *ngIf="productoForm.get('modelo')?.touched && productoForm.get('modelo')?.invalid"
     >
-      <small *ngIf="productoForm.get('modelo')?.errors?.['required']"
-        >EL modelo es obligatorio.</small
-      >
+      <small *ngIf="productoForm.get('modelo')?.errors?.['required']">
+        EL modelo es obligatorio.
+      </small>
     </div>
   </div>
 
+  <!-- Rodado -->
   <div class="form-group">
-    <label for="precio">Precio:</label>
-    <input
-      id="precio"
-      formControlName="precio"
-      type="number"
-      class="form-control"
-    />
-    <div
-      class="error"
-      *ngIf="
-        productoForm.get('precio')?.touched &&
-        productoForm.get('precio')?.invalid
-      "
+    <label for="rodado">Rodado:</label>
+    <select
+      id="rodado"
+      formControlName="rodado"
+      class="form-control select-arrow"
     >
-      <small *ngIf="productoForm.get('precio')?.errors?.['required']"
-        >El precio es obligatorio.</small
-      >
-      <small *ngIf="productoForm.get('precio')?.errors?.['min']"
-        >El precio no puede ser negativo.</small
-      >
-    </div>
+      @for (r of rodados; track r.id) {
+        <option [ngValue]="r.id">{{ r.nombre }}</option>
+      }
+    </select>
   </div>
 
+  <!-- Estilo -->
   <div class="form-group">
-    <label for="stock">Stock:</label>
-    <input
-      id="stock"
-      formControlName="stock"
-      type="number"
-      class="form-control"
-    />
-    <div
-      class="error"
-      *ngIf="
-        productoForm.get('stock')?.touched && productoForm.get('stock')?.invalid
-      "
+    <label for="estilo">Estilo:</label>
+    <select
+      id="estilo"
+      formControlName="estilo"
+      class="form-control select-arrow"
     >
-      <small *ngIf="productoForm.get('stock')?.errors?.['required']"
-        >El stock es obligatorio.</small
-      >
-      <small *ngIf="productoForm.get('stock')?.errors?.['min']"
-        >El stock no puede ser negativo.</small
-      >
-    </div>
+      @for (estilo of estilos; track estilo.id) {
+        <option [ngValue]="estilo.id">{{ estilo.nombre }}</option>
+      }
+    </select>
   </div>
 
+  <!-- Material -->
+  <div class="form-group">
+    <label for="material">Material:</label>
+    <select
+      id="material"
+      formControlName="material"
+      class="form-control select-arrow"
+    >
+      @for (m of materiales; track m.id) {
+        <option [ngValue]="m.id">{{ m.nombre }}</option>
+      }
+    </select>
+  </div>
+
+  <!-- Color -->
+  <div class="form-group">
+    <label for="color">Color:</label>
+    <select
+      id="color"
+      formControlName="color"
+      class="form-control select-arrow"
+    >
+      @for (c of colores; track c.id) {
+        <option [ngValue]="c.id">{{ c.nombre }}</option>
+      }
+    </select>
+  </div>
+
+  <!-- Imagen -->
   <div class="form-group">
     <label for="imagen">Imagen:</label>
     <input
@@ -106,28 +128,23 @@
     />
     <div
       class="error"
-      *ngIf="
-        productoForm.get('imagen')?.touched &&
-        productoForm.get('imagen')?.invalid
-      "
+      *ngIf="productoForm.get('imagen')?.touched && productoForm.get('imagen')?.invalid"
     >
-      <small *ngIf="productoForm.get('imagen')?.errors?.['required']"
-        >La imagen es obligatoria.</small
-      >
+      <small *ngIf="productoForm.get('imagen')?.errors?.['required']">
+        La imagen es obligatoria.
+      </small>
     </div>
   </div>
 
+<!-- Detalle -->
 <div class="form-group">
   <label for="detalle">Detalle:</label>
-  <input
+  <textarea
     id="detalle"
     formControlName="detalle"
-    type="text"
-    class="form-control"
+    class="form-control detalle-input"
     maxlength="500"
-  />
-  
-  <!-- Mensaje de error -->
+  ></textarea>
   <div
     class="error"
     *ngIf="productoForm.get('detalle')?.touched && productoForm.get('detalle')?.invalid"
@@ -140,7 +157,6 @@
     </small>
   </div>
 
-  <!-- Contador de caracteres -->
   <div class="error">
     <small [ngClass]="{'text-black': remainingCharacters > 0, 'text-danger': remainingCharacters <= 0}">
       Caracteres restantes: {{ remainingCharacters }}
@@ -150,69 +166,48 @@
 
 
 
+  <!-- Stock -->
   <div class="form-group">
-    <label for="marca">Marca:</label>
-    <select
-      id="marca"
-      formControlName="marca"
-      class="form-control select-arrow"
+    <label for="stock">Stock:</label>
+    <input
+      id="stock"
+      formControlName="stock"
+      type="number"
+      class="form-control"
+    />
+    <div
+      class="error"
+      *ngIf="productoForm.get('stock')?.touched && productoForm.get('stock')?.invalid"
     >
-      @for (marca of marcas; track marca.id) {
-      <option [ngValue]="marca.id">{{ marca.nombre }}</option>
-      }
-    </select>
+      <small *ngIf="productoForm.get('stock')?.errors?.['required']">
+        El stock es obligatorio.
+      </small>
+      <small *ngIf="productoForm.get('stock')?.errors?.['min']">
+        El stock no puede ser negativo.
+      </small>
+    </div>
   </div>
 
+  <!-- Precio -->
   <div class="form-group">
-    <label for="rodado">Rodado:</label>
-    <select
-      id="rodado"
-      formControlName="rodado"
-      class="form-control select-arrow"
+    <label for="precio">Precio:</label>
+    <input
+      id="precio"
+      formControlName="precio"
+      type="number"
+      class="form-control"
+    />
+    <div
+      class="error"
+      *ngIf="productoForm.get('precio')?.touched && productoForm.get('precio')?.invalid"
     >
-      @for (r of rodados; track r.id) {
-      <option [ngValue]="r.id">{{ r.nombre }}</option>
-      }
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="estilo">Estilo:</label>
-    <select
-      id="estilo"
-      formControlName="estilo"
-      class="form-control select-arrow"
-    >
-      @for (estilo of estilos; track estilo.id) {
-      <option [ngValue]="estilo.id">{{ estilo.nombre }}</option>
-      }
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="material">Material:</label>
-    <select
-      id="material"
-      formControlName="material"
-      class="form-control select-arrow"
-    >
-      @for (m of materiales; track m.id) {
-      <option [ngValue]="m.id">{{ m.nombre }}</option>
-      }
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="color">Color:</label>
-    <select
-      id="color"
-      formControlName="color"
-      class="form-control select-arrow"
-    >
-      @for (c of colores; track c.id) {
-      <option [ngValue]="c.id">{{ c.nombre }}</option>
-      }
-    </select>
+      <small *ngIf="productoForm.get('precio')?.errors?.['required']">
+        El precio es obligatorio.
+      </small>
+      <small *ngIf="productoForm.get('precio')?.errors?.['min']">
+        El precio no puede ser negativo.
+      </small>
+    </div>
   </div>
 
   <button type="submit" [disabled]="!productoForm.valid" class="page-btn">
