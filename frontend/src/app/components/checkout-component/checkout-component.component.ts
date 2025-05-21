@@ -7,6 +7,7 @@ import { PreferenceItem } from '../../types/types';
 import { Router } from '@angular/router';
 import { LoadingComponent } from '../loading/loading.component';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../enviroments/enviroment';
 declare var MercadoPago: any;
 
 @Component({
@@ -67,7 +68,7 @@ this.checkoutService.pagar(items).subscribe({
 }
 
   initBrickCheckout(preferenceId: string) {
-    const mp = new MercadoPago('TEST-e4a62483-088f-4d43-8185-62c1c1a9d794', { locale: 'es-AR' });
+    const mp = new MercadoPago(environment.mercadoPagoKey, { locale: 'es-AR' });
 
     mp.bricks().create("wallet", "wallet_container", {
       initialization: {
