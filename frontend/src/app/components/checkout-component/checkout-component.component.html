@@ -11,7 +11,7 @@
 
     <h2>Total: {{ totalAmount | currency:'USD' }}</h2>
 
-    <button (click)="pagar()">Pagar</button>
+    <button [disabled]="brickInicializado" (click)="pagar()">Pagar</button>
     <div id="wallet_container" style="margin-top: 20px;"></div>
   } @else {
     <div class="spinner-container">

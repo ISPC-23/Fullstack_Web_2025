@@ -23,6 +23,7 @@ export class CheckoutComponent implements OnInit {
     totalAmount = 0;
   isLoading = true;
    preferenceId: string | null = null;
+   brickInicializado = false;
 
   constructor(private cartService: CartService, private checkoutService: CheckoutService,  private router: Router
   ) {}
@@ -48,7 +49,7 @@ export class CheckoutComponent implements OnInit {
   }
 
 pagar() {
-  if (!this.cart) return;
+  if (!this.cart  || this.brickInicializado) return;
 
   const items: PreferenceItem[] = this.cart.items.map((item) => ({
     title: item.producto.modelo,
@@ -68,6 +69,8 @@ this.checkoutService.pagar(items).subscribe({
 }
 
   initBrickCheckout(preferenceId: string) {
+    if (this.brickInicializado) return;
+    this.brickInicializado = true;
     const mp = new MercadoPago(environment.mercadoPagoKey, { locale: 'es-AR' });
 
     mp.bricks().create("wallet", "wallet_container", {
@@ -80,6 +83,7 @@ this.checkoutService.pagar(items).subscribe({
         },
         onError: (error: any) => {
           console.error('Error en el pago:', error);
+           this.brickInicializado = false;
         },
         onSuccess: () => {
     
