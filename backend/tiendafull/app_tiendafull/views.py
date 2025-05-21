@@ -318,9 +318,9 @@ class MercadoPagoPreferenceView(APIView):
         "email": request.user.email, 
     },
     "back_urls": {
-        "success": "https://tusitio.com/success",
-        "failure": "https://tusitio.com/failure",
-        "pending": "https://tusitio.com/pending"
+        "success": "https://tiendafullbike.netlify.app/success",
+        "failure": "https://tiendafullbike.netlify.app/failure",
+        "pending": "https://tiendafullbike.netlify.app/pending"
     },
     "auto_return": "approved"
 }
