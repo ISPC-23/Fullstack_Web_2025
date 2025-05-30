@@ -13,6 +13,7 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { LogoutPageComponent } from './components/logout-page/logout-page.component';
 import { CheckoutComponent } from './components/checkout-component/checkout-component.component';
 import { IngresarProductosComponent } from './components/ingresar-productos/ingresar-productos.component';
+import { TokenLoginComponent } from './components/token-login/token-login.component';
 import { authGuard, loginGuard } from './auth.guard';
 import { SuccessComponent } from './components/mp-responses/success/success.component';
 import { FailureComponent } from './components/mp-responses/failure/failure.component';
@@ -22,6 +23,7 @@ export const routes: Routes = [
   { path: 'productos', component: ProductsComponent },
   { path: 'productos/:id', component: ProductDetailComponent },
   { path: 'inicio-sesion', component: LoginPageComponent },
+  { path: 'token-login', component: TokenLoginComponent },
   { path: 'panel-de-control', component: CustomerDashboardComponent, canActivate: [loginGuard] },
   { path: 'registro', component: RegisterComponent },
   { path: 'logout', component: LogoutPageComponent, canActivate: [loginGuard] },
