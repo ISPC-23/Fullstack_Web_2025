@@ -7,9 +7,9 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-success',
   standalone: true,
-  imports: [CommonModule, RouterModule,],
+  imports: [CommonModule, RouterModule],
   templateUrl: './success.component.html',
-  styleUrl: './success.component.css'
+  styleUrl: './success.component.css',
 })
 export class SuccessComponent implements OnInit {
   estado: 'procesando' | 'exito' | 'error' = 'procesando';
@@ -24,22 +24,24 @@ export class SuccessComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       const paymentId = params['payment_id'];
       const status = params['status'];
 
       if (paymentId && status === 'approved') {
         this.cartservice.confirmarCompra().subscribe({
-          next: res => {
+          next: (res) => {
+            alert('Compra confirmada con éxito');
             this.estado = 'exito';
             this.mensaje = '¡Compra confirmada con éxito!';
             this.purchase = res.purchase;
             this.details = res.details;
           },
-          error: err => {
+          error: (err) => {
+            console.error('Error al confirmar la compra:', err);
             this.estado = 'error';
             this.mensaje = 'Ocurrió un error al confirmar la compra.';
-          }
+          },
         });
       } else {
         this.estado = 'error';

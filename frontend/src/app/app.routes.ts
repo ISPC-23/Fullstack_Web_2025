@@ -19,24 +19,26 @@ import { SuccessComponent } from './components/mp-responses/success/success.comp
 import { FailureComponent } from './components/mp-responses/failure/failure.component';
 import { PendingComponent } from './components/mp-responses/pending/pending.component';
 export const routes: Routes = [
+  {
+    path: 'panel-de-control',
+    component: CustomerDashboardComponent,
+    canActivate: [loginGuard],
+  },
   { path: 'inicio', component: LandingPageComponent },
   { path: 'productos', component: ProductsComponent },
   { path: 'productos/:id', component: ProductDetailComponent },
-  { path: 'inicio-sesion', component: LoginPageComponent },
   { path: 'token-login', component: TokenLoginComponent },
-  { path: 'panel-de-control', component: CustomerDashboardComponent, canActivate: [loginGuard] },
-  { path: 'registro', component: RegisterComponent },
-  { path: 'logout', component: LogoutPageComponent, canActivate: [loginGuard] },
-  { path: 'recuperar-contraseña', component: RecoverPasswordComponent },
   { path: 'contacto', component: ContactPageComponent },
   { path: 'acerca-de-nosotros', component: AboutUsComponent },
+  { path: 'recuperar-contraseña', component: RecoverPasswordComponent },
+  { path: 'inicio-sesion', component: LoginPageComponent },
+  { path: 'registro', component: RegisterComponent },
+  { path: 'logout', component: LogoutPageComponent, canActivate: [loginGuard] },
   { path: 'carrito', component: CartPageComponent, canActivate: [loginGuard] },
-  {path: 'checkout', component: CheckoutComponent, canActivate: [loginGuard]},
-  { path: 'success', component: SuccessComponent },
-  { path: 'failure', component: FailureComponent },
-  { path: 'pending', component: PendingComponent },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [loginGuard] },
+  { path: 'success', component: SuccessComponent, canActivate: [loginGuard] },
+  { path: 'failure', component: FailureComponent, canActivate: [loginGuard] },
+  { path: 'pending', component: PendingComponent, canActivate: [loginGuard] },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: '**', component: NotFoundPageComponent },
-  
-  
 ];

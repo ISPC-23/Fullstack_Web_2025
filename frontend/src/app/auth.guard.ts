@@ -20,6 +20,7 @@ export const loginGuard: CanActivateFn = (route, state) => {
     return true;
   } else {
     alert('Debes estar logueado para acceder a esta sección');
+    window.location.href = '/inicio-sesion';
     return false;
   }
 };

@@ -15,17 +15,19 @@ declare var MercadoPago: any;
   standalone: true,
   imports: [LoadingComponent, CommonModule],
   templateUrl: './checkout-component.component.html',
-  styleUrl: './checkout-component.component.css'
+  styleUrl: './checkout-component.component.css',
 })
-
 export class CheckoutComponent implements OnInit {
   cart: Cart | null = null;
-    totalAmount = 0;
+  totalAmount = 0;
   isLoading = true;
-   preferenceId: string | null = null;
-   brickInicializado = false;
+  preferenceId: string | null = null;
+  brickInicializado = false;
 
-  constructor(private cartService: CartService, private checkoutService: CheckoutService,  private router: Router
+  constructor(
+    private cartService: CartService,
+    private checkoutService: CheckoutService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -48,34 +50,34 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-pagar() {
-  if (!this.cart  || this.brickInicializado) return;
+  pagar() {
+    if (!this.cart || this.brickInicializado) return;
 
-  const items: PreferenceItem[] = this.cart.items.map((item) => ({
-    title: item.producto.modelo,
-    quantity: item.cantidad,
-    unit_price: item.producto.precio,
-  }));
+    const items: PreferenceItem[] = this.cart.items.map((item) => ({
+      title: item.producto.modelo,
+      quantity: item.cantidad,
+      unit_price: item.producto.precio,
+    }));
 
-this.checkoutService.pagar(items).subscribe({
-  next: (res) => {
-    this.preferenceId = res.id;
-    this.initBrickCheckout(this.preferenceId);
-  },
-  error: (err) => {
-    console.error('Error al generar preferencia:', err);
+    this.checkoutService.pagar(items).subscribe({
+      next: (res) => {
+        this.preferenceId = res.id;
+        this.initBrickCheckout(this.preferenceId);
+      },
+      error: (err) => {
+        console.error('Error al generar preferencia:', err);
+      },
+    });
   }
-});
-}
 
   initBrickCheckout(preferenceId: string) {
     if (this.brickInicializado) return;
     this.brickInicializado = true;
     const mp = new MercadoPago(environment.mercadoPagoKey, { locale: 'es-AR' });
 
-    mp.bricks().create("wallet", "wallet_container", {
+    mp.bricks().create('wallet', 'wallet_container', {
       initialization: {
-        preferenceId: preferenceId
+        preferenceId: preferenceId,
       },
       callbacks: {
         onReady: () => {
@@ -83,10 +85,9 @@ this.checkoutService.pagar(items).subscribe({
         },
         onError: (error: any) => {
           console.error('Error en el pago:', error);
-           this.brickInicializado = false;
+          this.brickInicializado = false;
         },
         onSuccess: () => {
-    
           this.cartService.confirmarCompra().subscribe({
             next: (res) => {
               alert('¡Compra confirmada!');
@@ -95,9 +96,9 @@ this.checkoutService.pagar(items).subscribe({
             error: (err) => {
               console.error('Error al confirmar la compra:', err);
               alert('Ocurrió un error al confirmar la compra.');
-            }
+            },
           });
-        }
+        },
       },
     });
   }
