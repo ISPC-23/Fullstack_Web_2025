@@ -1,0 +1,17 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-background);
+}
+
+p {
+  max-width: 70%;
+}
+
+div {
+  margin-top: 20px;
+  display: flex;
+  gap: 5px;
+}
