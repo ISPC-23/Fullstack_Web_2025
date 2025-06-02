@@ -23,7 +23,6 @@ h1 {
   box-shadow: 8px 8px 10px #5353536e;
 }
 
-/* Nuevo contenedor para la imagen, botón y cantidad */
 .image-controls-container {
   display: flex;
   flex-direction: column;
@@ -71,16 +70,15 @@ h1 {
   margin-top: 20px;
 }
 
-/* 🔵 Botón "Agregar" más llamativo y centrado */
 .btn-agregar {
-  background-color: #007bff; /* Un azul más llamativo */
+  background-color: #007bff; 
   color: white;
   border: none;
   padding: 12px 24px;
   border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 15px; /* Espacio entre la imagen y el botón */
+  margin-top: 15px; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
   width: 90%;
@@ -118,7 +116,6 @@ h1 {
     box-shadow: 8px 8px 10px #5353536e;
   }
 
-  /* Aseguramos que el contenedor se centre también en pantallas más pequeñas */
   .image-controls-container {
     width: 100%;
   }
