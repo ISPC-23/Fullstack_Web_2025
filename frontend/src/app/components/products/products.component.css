@@ -147,6 +147,7 @@ button[type="submit"] {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin-bottom: 100px;
   gap: 50px;
 }
 

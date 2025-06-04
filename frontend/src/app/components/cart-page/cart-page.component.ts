@@ -28,7 +28,7 @@ export class CartPageComponent {
   purchaseConfirmed = false;
   purchase: PurchaseResponse = {} as PurchaseResponse;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService ) {}
 
   ngOnInit() {
     this.cartService.getCart().subscribe({
@@ -55,7 +55,7 @@ export class CartPageComponent {
     );
   }
 
-  realizarCompra() {
+  /*realizarCompra() {
     this.cartService.confirmarCompra().subscribe({
       next: (response) => {
         console.log('Compra realizada:', response);
@@ -76,5 +76,5 @@ export class CartPageComponent {
         }
       },
     });
-  }
+  }*/
 }

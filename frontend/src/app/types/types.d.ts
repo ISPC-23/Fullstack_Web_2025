@@ -75,3 +75,13 @@ export interface PurchaseDetail {
   precio_compra: number;
   producto: Product;
 }
+
+export interface PreferenceItem {
+  title: string;
+  quantity: number;
+  unit_price: number;
+}
+
+export interface PreferenceResponse {
+  id: string;
+}

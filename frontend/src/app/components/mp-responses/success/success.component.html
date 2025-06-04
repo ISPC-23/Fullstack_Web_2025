@@ -1,0 +1,36 @@
+<main class="success-container">
+  @if (estado === 'procesando') {
+  <p>Procesando compra...</p>
+  } @if (estado === 'exito') {
+  <section class="success-message">
+    <h2>{{ mensaje }}</h2>
+
+    @if (purchase) {
+    <div class="purchase-info">
+      <p><strong>Factura N°:</strong> {{ purchase.nro_factura }}</p>
+      <p><strong>Total:</strong> ${{ purchase.total }}</p>
+      <p><strong>Fecha:</strong> {{ purchase.fecha }}</p>
+    </div>
+    }
+
+    <h3>Detalle de productos:</h3>
+    @if (details.length > 0) {
+    <ul class="details-list">
+      @for ( item of details; track $index) {
+      <li>
+        <strong>{{ item.producto.modelo }}</strong> -
+        {{ item.cantidad }} unidad(es) - ${{ item.precio_compra }}
+      </li>
+      }
+    </ul>
+    }
+
+    <a routerLink="/inicio" class="btn-volver">Volver al inicio</a>
+  </section>
+  } @if (estado === 'error') {
+  <section class="error-message">
+    <h2>{{ mensaje }}</h2>
+    <a routerLink="/inicio" class="btn-volver">Volver al inicio</a>
+  </section>
+  }
+</main>

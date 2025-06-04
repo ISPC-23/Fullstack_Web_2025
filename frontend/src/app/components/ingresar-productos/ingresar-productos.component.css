@@ -137,3 +137,8 @@ h2 {
 .text-danger {
   color: red;
 }
+
+.detalle-input {
+  height: 100px;  /* Ajusta esta propiedad para controlar la altura */
+  resize: none;  /* Opcional: evita que el campo sea redimensionable por el usuario */
+}
